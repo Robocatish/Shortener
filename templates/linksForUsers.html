@@ -1,0 +1,11 @@
+{% extends 'index.html' -%}
+  {% block content -%}
+  {{ super() }}
+  <div>
+        <ul>
+            {% for link in links -%}
+                <li><a href="{{link[3]}}">{{link[3]}}</a> - {{link[2]}}</li>
+            {% endfor -%}
+        </ul>
+    </div>
+  {% endblock -%}

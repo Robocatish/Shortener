@@ -1,0 +1,39 @@
+{% extends 'index.html' -%}
+  {% block content -%}
+  {{ super() }}
+    <div>
+        <h2>Здравствуйте, {{login}}!</h2>
+        <h3>Это ваш личный кабинет</h3>
+        <h3><a href="/logout">Выйти из аккаунта</a></h3>
+          <form class="container" action="" method="post">
+            <div class="brand-title">Сократить ссылку</div>
+            {% for msg in get_flashed_messages() -%}
+              <h3 class="flash">{{msg}}</h3>
+            {% endfor -%}
+            <div class="inputs">
+              <p><input class="input" type="text" name="name" placeholder="название ссылки"></p>
+              <p><input class="input" type="text" name="link" placeholder="URL"></p>
+              <p>
+                <label for="status">Вид ссылок
+                  <select id="status" name="status">
+                    <option value="Публичная">Публичная</option>
+                    <option value="для пользователей">для пользователей</option>
+                    <option value="Приватная">Приватная</option>
+                  </select>
+              </label>
+              </p>
+              <input class="button" type="submit">
+            </div>
+          </form>
+          <br>
+          <hr>
+          <div>
+            <ul>
+              <h2>Мои ссылки</h2>
+              {% for link in links %}
+                <li><a href="{{link[3]}}">{{link[3]}}</a> - {{link[2]}} ({{link[4]}}) <a href="/office/{{ link[0] }}/delete">Удалить</a> <a href="/office/{{ link[0] }}/update">Изменить</a></li>
+              {% endfor -%}
+            </ul>
+          </div>
+    </div>
+  {% endblock -%}

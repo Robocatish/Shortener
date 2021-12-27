@@ -1,0 +1,15 @@
+{% extends 'index.html' -%}
+  {% block content -%}
+  {{ super() }}
+    <form class="container" action="/register" method="post">
+        <div class="brand-title">Регистрация</div>
+        {% for msg in get_flashed_messages() -%}
+          <h2 class="flash">{{msg}}</h2>
+        {% endfor -%}
+        <div class="inputs"></div>
+            <input class="input" type="text" name="login" placeholder="Login"><br>
+            <input class="input" type="text" name="password" placeholder="Password"><br>
+            <input class="button" type="submit">
+        </div>
+    </form>
+  {% endblock -%}
